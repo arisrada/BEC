@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+
+class SeventhPage extends StatelessWidget {
+  const SeventhPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'GridView.Builder',
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('GridView.Builder'),
+          ),
+          body: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: [Container(
+              child: Image.asset('assets/image/instagram.jpg'),
+            ),
+              Container(
+                child: Image.asset('assets/image/whatsapp.jpg'),
+              ),
+              Container(
+                child: Image.asset('assets/image/you_tube.jpg'),
+              ),
+              Container(
+                child: Image.asset('assets/image/facebook.jpg'),
+              ),
+              Container(
+                child: Image.asset('assets/image/telegram.jpg'),
+              ),
+              Container(
+                child: Image.asset('assets/image/snapchat.jpg'),
+              ),
+            ],
+          ),
+        )
+    );
+  }
+}

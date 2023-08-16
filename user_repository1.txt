@@ -1,0 +1,54 @@
+import 'dart:developer';
+import 'package:dio/dio.dart';
+import 'package:untitled1/https/response/user.dart';
+import 'package:http/http.dart' as http;
+
+
+class user_repository {
+  Future<List<User>?> getUser() async {
+    // var url;
+    // Dio? dio;
+    // try {
+    //print('Api');
+    // Response userData=await Dio().get('https://jsonplaceholder.typicode.com/users/$id');
+    //   print('User Info:${userData.data}');
+    //   user = User.fromJson(userData.data);
+    // }on DioError catch(e){
+    try {
+      var url = Uri.parse('https://reqres.in/api/users?page=2/');
+      var response = await http.get(url);
+      if (response.statusCode == 200) {
+        List<User>? model = userFromJson(response.body);
+        print(model);
+        return model;
+      }
+    } catch (e) {
+      // log(e.toString());
+      print(e);
+    }
+  }
+}
+        // if (e.response !=null){
+//           print('Dio error!');
+//           print('STATUS:${e.response?.statusCode}');
+//           print('DATA:${e.response?.data}');
+//           print('HEADERS:${e.response?.headers}');
+//     }else{ApiConstants.baseUrl1 + ApiConstants.usersEndpoint
+//           print('Error sending request!');
+//           print(e.message);
+//         }
+//     }
+//     return user;
+//   }
+// }
+// Future<List<User>?> getUsers() async {
+//   try {
+//     var url = Uri.parse(ApiConstants.baseUrl1 + ApiConstants.usersEndpoint);
+//     var response = await http.get(url);
+//     if (response.statusCode == 10) {
+
+    // } catch (e)
+  // {
+  //     log(e.toString());
+  //   }
+

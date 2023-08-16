@@ -1,0 +1,213 @@
+// import 'dart:convert';
+// import 'package:dio/dio.dart';
+// import 'dart:convert';
+// import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled1/thirdpage.dart';
+// import 'package:universal_ui/universal_ui.dart';
+// import 'package:untitled1/https/repositories/user_repository.dart';
+import 'https/repositories/user_repository.dart';
+import 'https/response/api_service.dart';
+import 'https/response/user.dart';
+
+
+class SecondPage extends StatefulWidget {
+  const SecondPage({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+// class DioClient {
+//   final Dio _dio = Dio();
+//   final _baseUrl = 'https://jsonplaceholder.typicode.com/users/';
+//
+//   getUser({required String id}) {}
+// }
+class _SecondPageState extends State<SecondPage> {
+  late List<User>?_user=[];
+  final images = [
+    ("assets/images/user1.jpg"),
+    ("assets/images/user2.jpg"),
+    ("assets/images/user3.jpg"),
+    ("assets/images/user4.jpg"),
+    ("assets/images/user5.jpg"),
+    ("assets/images/user6.jpg"),
+    ("assets/images/user7.jpg"),
+    ("assets/images/user8.jpg"),
+    ("assets/images/user9.jpg"),
+    ("assets/images/user10.jpg"),
+  ];
+  @override
+  void initState() {
+    super.initState();
+    _getData();
+  } // @override
+  //  _initState() async {
+  //   _user=(await user_repository().getUser())!;
+  //   // Future.delayed(const Duration(seconds:1)).then((value)=>setState(() {}));
+  //   super.initState();
+  //   _getData();
+  // }
+  void _getData()async{
+    _user=(await user_repository().getUser())!;
+    Future.delayed(const Duration(seconds:1)).then((value)=>setState(() {}));
+  }
+  @override
+  Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+centerTitle:true,
+title: Text('User Info'),
+),
+body: _user==null || _user!.isEmpty?const Center(child:CircularProgressIndicator(),)
+  :ListView.builder(
+    itemCount:_user!.length,
+  itemBuilder:(context,index) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15.0),),
+      // margin: EdgeInsets.all(20),
+      color: Colors.lime.shade50,
+      child: Column(
+        children: [
+// Center(
+// child: FutureBuilder<User?>(
+// future:user_repository.getUser(id:'3'),
+// builder: (context, snapshot)  {
+// if (snapshot.hasData) {
+// User? userInfo = snapshot.data;
+// if (userInfo != null) {
+//
+// return
+// Column(
+// children: [
+          Container(
+            child: Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage(images[index]),
+                ),
+                Text(_user![index].username,
+                  style: TextStyle(
+                      fontSize: 13.0,
+                     color: Colors.black
+                       ),
+                        ),
+                Expanded(child:
+                InkWell(
+                  onTap: () {
+                    print('clicked');
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder:
+                                (BuildContext context) => ThirdPage()));
+                  },
+                  child: Container(alignment: Alignment.topRight,
+                    decoration: BoxDecoration(),
+                    child: Text('open'),
+                  ),
+                ),
+                ),
+                // Expanded(child:
+                // Container(alignment: Alignment.topRight,
+                //   child:
+                //   Text('open'),
+                // ),
+                // ),
+              ],
+            ),
+          ),
+          Text(_user![index].name,
+            style: TextStyle(fontSize: 13.0, color: Colors.black38),
+          ),
+          Text(
+            // userInfo.name,
+            _user![index].email,
+            style: TextStyle(fontSize: 10.0, color: Colors.black38),
+          ),
+          Text(
+            _user![index].phone,
+            style: TextStyle(fontSize: 10.0, color: Colors.black38),
+          ),
+          Text(
+            _user![index].website,
+            style: TextStyle(fontSize: 10.0, color: Colors.black38),
+          ),
+        ],
+      ),
+    );
+  }
+    ),
+    );
+}
+}
+// ListView(
+// scrollDirection:Axis.vertical ,
+// children:[
+// Card(
+// shape: RoundedRectangleBorder(
+// borderRadius: BorderRadius.circular(15.0),),
+// margin: EdgeInsets.all(20),
+// color: Colors.black38,
+// child:Column(
+// children: [
+// Center(
+// child: FutureBuilder<User?>(
+// future:UserRepository.getUser(id: '3'),
+// builder: (context, snapshot)  {
+// if (snapshot.hasData) {
+// User? userInfo = snapshot.data;
+// if (userInfo != null) {
+//
+// return
+// Column(
+// children: [
+// Container(
+// child:Row(
+// children:[
+// CircleAvatar(backgroundImage: AssetImage('assets/images/user1.jpg'),
+// ),
+// Text(
+// userInfo.name,
+// style: TextStyle(fontSize: 16.0,color: Colors.black),
+// ),
+// Text(
+// userInfo.username,
+// style: TextStyle(fontSize: 16.0,color: Colors.black),
+// ),
+// Expanded(child:
+// Container(alignment: Alignment.topRight,
+// child:
+// Text('invite'),
+// ),
+// ),
+// ],
+// ),
+// ),
+// Text(
+// userInfo.email,
+// style: TextStyle(fontSize: 10.0,color: Colors.black),
+// ),
+// Text(
+// userInfo.phone,
+// style: TextStyle(fontSize: 10.0,color: Colors.black),
+// ),
+// Text(
+// userInfo.website,
+// style: TextStyle(fontSize: 10.0,color: Colors.black),
+// ),
+// ],
+// );
+// }
+// }
+// return CircularProgressIndicator();
+// }
+// ),
+// ),
+// ],
+// ),
+// ),
+// ],
+// ),

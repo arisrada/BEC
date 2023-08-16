@@ -1,0 +1,159 @@
+import 'package:flutter/material.dart';
+import 'package:untitled/eighthpage.dart';
+import 'package:untitled/fifthpage.dart';
+import 'package:untitled/fourthpage.dart';
+import 'package:untitled/ninthpage.dart';
+import 'package:untitled/seventhpage.dart';
+import 'package:untitled/sixthpage.dart';
+import 'package:untitled/tenthpage.dart';
+
+class ThirdPage extends StatelessWidget {
+  const ThirdPage({Key? key}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+        centerTitle:true,
+        title:Text('MY APPS')
+    ),
+    body:
+      ListView(children: [
+          InkWell(
+          onTap: () {
+            print('clicked');
+            Navigator.push(context,
+              MaterialPageRoute(
+             builder:
+            (BuildContext context) => FourthPage()
+          ),
+          );
+           },
+          child:
+            Container(
+            height: 50,
+            width: 100,
+            color: Colors.green,
+             child:const Center(child: Text('app 1'),
+            ),
+          ),
+           ),
+       InkWell(
+         onTap: () {
+         print('clicked');
+         Navigator.push(context,
+         MaterialPageRoute(
+          builder:
+          (BuildContext context) => FifthPage()
+         ),
+         );
+         },
+         child:
+         Container(
+          height: 50,
+         width:100 ,
+         color: Colors.lightGreen,
+         child: const Center(child: Text('app 2'),
+      ),
+    ),
+    ),
+        InkWell(
+          onTap: () {
+          print('clicked');
+          Navigator.push(context,
+          MaterialPageRoute(
+          builder:
+          (BuildContext context) => SixthPage()
+        ),
+        );
+        },
+        child:
+         Container(
+           height: 50,
+           width: 100,
+           color: Colors.lightGreenAccent,
+           child: const Center(child: Text('app 3'),
+        ),
+        ),
+        ),
+         InkWell(
+         onTap: () {
+          print('clicked');
+          Navigator.push(context,
+          MaterialPageRoute(
+          builder:
+          (BuildContext context) => SeventhPage()
+         ),
+       );
+       },
+     child:
+          Container(
+          height: 50,
+          width: 100,
+          color: Colors.green,
+          child:const Center(child: Text('app 4'),
+          ),
+        ),
+    ),
+        InkWell(
+         onTap: () {
+         print('clicked');
+         Navigator.push(context,
+         MaterialPageRoute(
+         builder:
+         (BuildContext context) => EighthPage()
+         ),
+         );
+         },
+         child:
+         Container(
+          height: 50,
+          width: 100,
+          color: Colors.lightGreen,
+          child: const Center(child: Text('app 5'),
+          ),
+        ),
+    ),
+        InkWell(
+          onTap: () {
+            print('clicked');
+            Navigator.push(context,
+              MaterialPageRoute(
+                  builder:
+                      (BuildContext context) => NinthPage()
+              ),
+            );
+            },
+          child: Container(
+            height: 50,
+            width: 100,
+            color: Colors.lightGreenAccent,
+            child: const Center(child: Text('app 6'),
+            ),
+          ),
+        ),
+      InkWell(
+        onTap: () {
+          print('clicked');
+          Navigator.push(context,
+            MaterialPageRoute(
+                builder:
+                    (BuildContext context) => TenthPage()
+            ),
+          );
+        },
+        child:
+        Container(
+          height: 50,
+          width: 100,
+          color: Colors.green,
+          child:const Center(child: Text('app 7'),
+          ),
+        ),
+      ),
+      ],
+      ),
+        );
+  }
+}

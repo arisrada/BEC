@@ -1,0 +1,106 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled1/https/repositories/user_repository.dart';
+
+import 'https/response/user.dart';
+class SecondPage extends StatefulWidget {
+  const SecondPage({Key? key, required this.title}) : super(key: key);
+  final String title;
+
+
+  @override
+  State<SecondPage> createState() => _SecondPageState();
+}
+class DioClient {
+  final Dio _dio = Dio();
+  final _baseUrl = 'https://jsonplaceholder.typicode.com/users/';
+
+  getUser({required String id}) {}
+}
+class _SecondPageState extends State<SecondPage> {
+  late List<User>?_user=[];
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+centerTitle:true,
+title: Text('User Info'),
+),
+body:
+ListView(
+scrollDirection:Axis.vertical ,
+children:[
+Card(
+shape: RoundedRectangleBorder(
+borderRadius: BorderRadius.circular(15.0),),
+margin: EdgeInsets.all(20),
+color: Colors.black38,
+child:Column(
+children: [
+Center(
+child: FutureBuilder<User?>(
+future:UserRepository.getUser(id: '3'),
+builder: (context, snapshot)  {
+if (snapshot.hasData) {
+User? userInfo = snapshot.data;
+if (userInfo != null) {
+
+return
+Column(
+children: [
+Container(
+child:Row(
+children:[
+CircleAvatar(backgroundImage: AssetImage('assets/images/user1.jpg'),
+),
+Text(
+userInfo.name,
+style: TextStyle(fontSize: 16.0,color: Colors.black),
+),
+Text(
+userInfo.username,
+style: TextStyle(fontSize: 16.0,color: Colors.black),
+),
+Expanded(child:
+Container(alignment: Alignment.topRight,
+child:
+Text('invite'),
+),
+),
+],
+),
+),
+Text(
+userInfo.email,
+style: TextStyle(fontSize: 10.0,color: Colors.black),
+),
+Text(
+userInfo.phone,
+style: TextStyle(fontSize: 10.0,color: Colors.black),
+),
+Text(
+userInfo.website,
+style: TextStyle(fontSize: 10.0,color: Colors.black),
+),
+],
+);
+}
+}
+return CircularProgressIndicator();
+}
+),
+),
+],
+),
+),
+],
+),
+);
+}
+}

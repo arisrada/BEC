@@ -1,0 +1,54 @@
+ return Scaffold(
+      appBar: AppBar(title: Text('ACADEMY')),
+      body:
+        SingleChildScrollView(
+          child: Column(
+            // children: [Text('LOGIN'),
+            //   TextField(
+            //     decoration: InputDecoration(
+            //       border: OutlineInputBorder(),
+            //       hintText: 'Enter a search term',
+            //     ),
+            //   ),
+            // ],
+            children:[Container(
+              height: 191,
+              width: 131,
+              child:
+              Image.asset('assets/image/login.jpg'),
+            ),
+              Text('LOGIN'),
+              TextField(
+                controller: username,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'ENTER USER NAME',
+                ),
+              ),
+              TextField(
+                controller: password,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'ENTER PASSWORD',
+                ),
+              ),
+              InkWell(
+            onTap: () {
+              print(username);
+              print(password);
+              Navigator.push(context,
+                  MaterialPageRoute(
+                    builder:
+                    (BuildContext context) => SecondPage()));
+            },
+               child: Container(
+                decoration: BoxDecoration(color: Colors.lime),
+                child: Text('CLICK'),
+            ),
+          ),
+            ],//children
+                ),
+              ),
+      );
+  }
+}

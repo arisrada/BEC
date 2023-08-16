@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+
+class FourthPage extends StatelessWidget {
+  const FourthPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+            centerTitle:true,
+            title:Text('MY APPS')
+        ),
+        body:Center(
+          child: SizedBox(
+            width: 300,
+            height: 300,
+            child: Center(
+              child: Stack(
+                children: [
+                  Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    width: 250,
+                    height: 250,
+                    color: Colors.black,
+                  ),
+                  Container(
+                    width: 200,
+                    height: 200,
+                    color: Colors.purple,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+    );
+  }
+}

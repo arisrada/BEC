@@ -1,0 +1,61 @@
+import 'package:untitled/thirdpage.dart';
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context){
+      return  Scaffold(
+          appBar: AppBar(
+              centerTitle:true,
+              title:Text('MY DOWNLOADS')
+          ),
+          body:
+    Center(
+    child:Column(
+    children: [Container(
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children:[Container(
+    height: 100,
+    width: 100,
+    child:Image.asset('assets/image/hourglass.jpg'),
+    ),
+
+    Container(
+    child:
+    Text('running'),
+    ),
+
+    InkWell(
+    onTap: () {
+    print('clicked');
+    Navigator.push(context,
+    MaterialPageRoute(
+    builder:
+    (BuildContext context) => ThirdPage()
+    ),
+    );
+    },
+    child:Container(
+    margin: const EdgeInsets.symmetric(vertical:6.0, horizontal:6.0),
+    padding: EdgeInsets.all(15.0),
+
+    child:
+    Text('hourglass'),
+    decoration: BoxDecoration(
+    color: Colors.blue,
+    shape: BoxShape.rectangle,
+    )
+    ),
+    ),
+    ]
+    ),
+    ),
+    ],
+    ),
+    ),
+      );
+  }
+}
